@@ -22,6 +22,7 @@ import java.net.*;
 import java.util.*;
 import java.applet.Applet;
 import java.applet.AudioClip;
+import javax.swing.*;
 
 /************************************************************************************************
 *  The BubbleroidsSprite class defines a game object, including it's shape, position, movement and
@@ -1690,5 +1691,36 @@ public class Bubbleroids extends Applet implements Runnable {
       // Copy the off screen buffer to the screen.
 
       spaceGraphics.drawImage(spaceImage, 0, 0, this);
+   }
+
+
+   // Main.
+   @SuppressWarnings("deprecation")
+   public static void main(String[] args)
+   {
+      // Create game.
+      Bubbleroids game = new Bubbleroids();
+
+      // Create frame.
+      JFrame frame = new JFrame();
+
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      frame.setTitle("Bubbleroids");
+      frame.setBounds(0, 0, 500, 399);
+      frame.setLayout(new GridLayout(1, 1));
+      frame.add(game);
+      frame.setVisible(true);
+
+      // Run applet.
+      game.init();
+      game.start();
+      frame.resize(new Dimension(500, 400));
+
+      // Print instructions.
+      System.out.println("   Keyboard Controls:");
+      System.out.println();
+      System.out.println("     Arrow Left  - Rotate Left   Arrow Up   - Fire Thrusters");
+      System.out.println("     Arrow Right - Rotate Right  Arrow Down - Fire Retro Thrusters");
+      System.out.println("     Spacebar    - Fire Cannon   H          - Hyperspace");
    }
 }
